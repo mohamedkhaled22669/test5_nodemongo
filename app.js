@@ -1,11 +1,34 @@
 var express = require('express');
 var app = express();
-var db = require('./config/database');
+
+
+var mongoose = require('mongoose');
+
+mongoose.connect(process.env.DATABASE_URL, {
+     useNewUrlParser: true })
+var db = mongoose.connection;
+db.on('error',error => console.error(error));
+db.once('open',() => console.log('Connected to mongoose'));
+
+var port = process.env.PORT || 3000;
+
+
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var flash = require('connect-flash');
 var passport = require('passport');
 var passportsetup = require('./config/passport-setup');
+
+
+
+
+
+
+
+
+
+
+
 
 //bring ejs template
 app.set('view engine', 'ejs');
