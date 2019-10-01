@@ -84,7 +84,7 @@ app.use('/users', users);
 
 
 //listen to port 3000
-app.listen(3000, function(req, res) {
+app.listen(port, function(req, res) {
 
-    console.log('app is working in port 3000');
+    console.log(`app is working in port ${port)`);
 });
